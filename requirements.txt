@@ -1,4 +1,2 @@
-```
 pandas>=2.2.0
-whois>=2.2.7
-```
+python-whois
