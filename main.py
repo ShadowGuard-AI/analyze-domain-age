@@ -37,6 +37,12 @@ def analyze_domain_age(domain):
         if w.creation_date:
             # Handle cases where creation_date is a list or a single datetime object
             creation_date = w.creation_date[0] if isinstance(w.creation_date, list) else w.creation_date
+            # Some registries return a timezone aware stamp and others a
+            # naive one, depending on the TLD. Normalise aware stamps to
+            # naive UTC, or the subtraction below raises TypeError and the
+            # generic handler reports a good lookup as a failure.
+            if creation_date.tzinfo is not None:
+                creation_date = creation_date.astimezone(datetime.timezone.utc).replace(tzinfo=None)
             current_date = datetime.datetime.now()
             age_in_days = (current_date - creation_date).days
 
@@ -86,7 +92,8 @@ def main():
 
     domain = args.domain
 
-    # Input validation: Basic domain name check (more robust validation can be added)
+    # Input validation: basic domain name check only. Anything stricter
+    # belongs in the WHOIS layer, which rejects bad names itself.
     if not isinstance(domain, str) or not "." in domain:
         logging.error("Invalid domain name. Please provide a valid domain name (e.g., example.com).")
         sys.exit(1)
@@ -104,22 +111,10 @@ def main():
             save_results_to_csv([analysis_result], args.output)
     else:
         logging.warning(f"Could not retrieve domain age information for: {domain}")
+        sys.exit(1)
 
 
 
 if __name__ == "__main__":
     main()
 
-# Usage Examples:
-
-# 1. Basic usage:
-# python analyze-domain-age.py example.com
-
-# 2. With verbose logging:
-# python analyze-domain-age.py example.com -v
-
-# 3. Save results to a CSV file:
-# python analyze-domain-age.py example.com -o results.csv
-
-# 4. Check another domain and save results:
-# python analyze-domain-age.py google.com -o google_results.csv
