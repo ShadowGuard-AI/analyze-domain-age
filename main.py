@@ -35,7 +35,11 @@ def analyze_domain_age(domain):
         w = whois.whois(domain)
 
         if w.creation_date:
-            # Handle cases where creation_date is a list or a single datetime object
+            # A list here means the registry gave more than one creation
+            # stamp, and they do not always agree. I take the first as
+            # the library orders it; nothing guarantees it is the
+            # earliest, so the age for such a domain is only as good as
+            # that ordering.
             creation_date = w.creation_date[0] if isinstance(w.creation_date, list) else w.creation_date
             # Some registries return a timezone aware stamp and others a
             # naive one, depending on the TLD. Normalise aware stamps to
@@ -43,6 +47,11 @@ def analyze_domain_age(domain):
             # generic handler reports a good lookup as a failure.
             if creation_date.tzinfo is not None:
                 creation_date = creation_date.astimezone(datetime.timezone.utc).replace(tzinfo=None)
+            # One mismatch survives the normalising above: an aware
+            # creation stamp is converted to UTC, but now() here is
+            # local time with no zone attached. On a machine set away
+            # from UTC the age shifts by that offset, a few hours that
+            # only matters for a domain registered today.
             current_date = datetime.datetime.now()
             age_in_days = (current_date - creation_date).days
 
@@ -77,6 +86,9 @@ def save_results_to_csv(results, output_file):
         df.to_csv(output_file, index=False)
         logging.info(f"Results saved to CSV file: {output_file}")
     except Exception as e:
+        # The failure is swallowed here, so main prints a successful
+        # result and exits 0 even when the CSV was never written. The
+        # console result is real; the missing file is the surprise.
         logging.error(f"Failed to save results to CSV: {e}")
 
 
