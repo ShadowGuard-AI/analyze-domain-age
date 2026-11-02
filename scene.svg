@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="Station wall: tiles flip into a blank mosaic panel in four rows, the lowest block pulses once, and a violet light wash passes behind the columns">
+<rect x="0" y="0" width="1200" height="300" fill="#241f3c"/>
+<polygon points="120,0 190,0 320,268 210,268" fill="#f6eecd" opacity="0.14">
+<animate attributeName="opacity" values="0.14;0.05;0.14" dur="30s" repeatCount="indefinite"/>
+</polygon>
+<polygon points="430,0 500,0 640,268 540,268" fill="#f6eecd" opacity="0.05">
+<animate attributeName="opacity" values="0.05;0.15;0.05" dur="30s" begin="10s" repeatCount="indefinite"/>
+</polygon>
+<rect x="380" y="52" width="440" height="196" fill="#3e3060"/>
+<g fill="#eee4c8">
+<rect x="404" y="72" width="392" height="34" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.08;0.16;1" dur="24s" repeatCount="indefinite"/></rect>
+<rect x="404" y="114" width="330" height="34" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.2;0.28;1" dur="24s" repeatCount="indefinite"/></rect>
+<rect x="404" y="156" width="368" height="34" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.32;0.4;1" dur="24s" repeatCount="indefinite"/></rect>
+<rect x="404" y="198" width="262" height="34" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0.72;1;1" keyTimes="0;0.44;0.52;0.7;0.76;0.82;1" dur="24s" repeatCount="indefinite"/></rect>
+</g>
+<rect x="930" y="60" width="270" height="34" fill="#6c5aa8" opacity="0">
+<animate attributeName="opacity" values="0;0.65;0;0;0.65;0" keyTimes="0;0.08;0.16;0.55;0.63;0.71" dur="40s" repeatCount="indefinite"/>
+</rect>
+<g fill="#2c2748"><rect x="956" y="30" width="30" height="240"/><rect x="1056" y="30" width="30" height="240"/><rect x="1156" y="30" width="30" height="240"/></g>
+<g fill="#96703f">
+<ellipse cx="180" cy="272" rx="14" ry="5"><animateTransform attributeName="transform" type="rotate" values="0 180 272; 3 180 272; 0 180 272" dur="40s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="238" cy="280" rx="11" ry="4"><animateTransform attributeName="transform" type="rotate" values="0 238 280; -3 238 280; 0 238 280" dur="40s" repeatCount="indefinite"/></ellipse>
+</g>
+<polygon points="742,258 796,252 802,274 748,280" fill="#eee4c8"/>
+<polygon points="748,264 798,258" stroke="#fffaf0" stroke-width="3"><animate attributeName="opacity" values="0;0;1;0;0;1;0" keyTimes="0;0.06;0.09;0.14;0.53;0.56;0.61" dur="40s" repeatCount="indefinite"/></polygon>
+</svg>
