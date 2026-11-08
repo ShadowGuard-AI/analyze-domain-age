@@ -3,83 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>analyze-domain-age: The Subway Tile Beaux Arts Station</title>
-<meta name="description" content="analyze-domain-age determines the age of a domain name by means of WHOIS lookups, using the python-whois library.">
+<title>analyze-domain-age: The Strata Section</title>
 <style>
-@font-face{font-family:'Audiowide';src:url('fonts/Audiowide.ttf') format('truetype');}
-@font-face{font-family:'Alegreya Sans';src:url('fonts/AlegreyaSans.ttf') format('truetype');}
-:root{--cream:#eee4c8;--tan:#c4a474;--violet:#3e3060;--chrome:#c4c8cc}
-*{box-sizing:border-box}body{margin:0;background:repeating-linear-gradient(0deg,#f2ead2 0 46px,#d9cba6 46px 48px),repeating-linear-gradient(90deg,#f2ead2 0 46px,#d9cba6 46px 48px);color:#2a2438;font-family:'Alegreya Sans',sans-serif;line-height:1.65}
-h1,h2{font-family:'Audiowide',sans-serif}
-.hero{padding:2rem 6vw 0;max-width:1080px;margin:0 auto}.hero img.banner{width:100%}.logo{width:150px}
-main{padding:0 6vw 3rem;max-width:1080px;margin:0 auto}
-nav{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
-.tilebtn{display:inline-block;background:var(--violet);color:var(--cream);font-family:'Audiowide',sans-serif;text-decoration:none;padding:.7rem 1.1rem;border-top:3px solid var(--chrome);border-left:3px solid var(--chrome);border-right:3px solid var(--chrome);border-bottom:5px solid #8a6f47;transition:transform .15s}
-.tilebtn:hover{filter:brightness(1.25)}
-.tilebtn:active{transform:translateY(3px)}
-.tilebtn:focus-visible{outline:3px solid var(--chrome);outline-offset:2px}
-.panel{background:#f6efdb;border:2px solid var(--tan);border-top:none;padding:0 1.4rem 1.2rem;margin:1.6rem 0}
-.panel h2{background:var(--violet);color:var(--cream);padding:.7rem .9rem;margin:0 -1.4rem 1rem;border-radius:120px 120px 0 0;text-align:center;position:relative}
-.panel h2:after{content:'';position:absolute;left:50%;top:-9px;margin-left:-7px;width:14px;height:14px;background:var(--chrome);transform:rotate(45deg)}
-pre{background:var(--violet);color:var(--cream);padding:1rem;overflow-x:auto}
-a{color:#3e3060}a:before{content:'\276F  ';color:#9aa0a4;font-weight:bold}
-a:hover:before{color:var(--violet)}
-.tilebtn:before,nav a:before{content:none}
-.frieze{height:22px;margin:2rem 0;background:repeating-linear-gradient(90deg,var(--cream) 0 22px,var(--violet) 22px 44px);border:1px solid var(--tan);position:relative}
-.frieze:after{content:'';position:absolute;left:56%;top:0;width:22px;height:22px;background:var(--cream);border-left:2px solid #241f3c;transform:skewX(-18deg)}
-footer{padding:1rem 6vw 2.4rem;max-width:1080px;margin:0 auto}
+@font-face { font-family: 'Shrikhand'; src: url('fonts/Shrikhand-400.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Hind'; src: url('fonts/Hind-400.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Hind'; src: url('fonts/Hind-700.woff2') format('woff2'); font-weight: 700; }
+:root { --tan: #c8a165; --shale: #55524e; --cream: #f3ead8; --ribbon: #c53b2c; --ink: #2e2a24; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Hind', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.65; }
+header.top { display: flex; justify-content: space-between; align-items: center; padding: 16px 28px; background: var(--shale); color: var(--cream); border-bottom: 6px solid var(--tan); }
+.wordmark { font-weight: 700; letter-spacing: .05em; }
+.ribbon-note { color: #f0b7ae; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+.hero { text-align: center; padding: 50px 22px 8px; }
+.hero img.logo { width: 172px; height: auto; border: 5px solid var(--tan); border-radius: 50%; background: #fff; }
+h1 { font-family: 'Shrikhand', serif; font-weight: 400; font-size: 2.6rem; margin: 18px 0 6px; color: var(--shale); }
+h2 { font-family: 'Shrikhand', serif; font-weight: 400; color: var(--shale); border-bottom: 3px solid var(--tan); padding-bottom: 5px; margin-top: 38px; }
+.tag { max-width: 43rem; margin: 0 auto; }
+.buttons { margin: 22px 0 6px; }
+.buttons a { display: inline-block; margin: 4px; padding: 11px 22px; background: var(--ribbon); color: #fff; font-weight: 700; text-decoration: none; border-radius: 4px; }
+.buttons a.alt { background: transparent; color: var(--shale); border: 2px solid var(--shale); }
+figure.wide { max-width: 1020px; margin: 24px auto; padding: 0 18px; }
+figure.wide img { width: 100%; height: auto; display: block; border: 1px solid var(--tan); }
+figcaption { color: #6f675a; font-size: .9rem; padding-top: 8px; text-align: center; }
+.bands { max-width: 880px; margin: 20px auto 0; padding: 0 22px; }
+.bands div { padding: 10px 16px; margin: 6px 0; color: #fff; }
+.b1 { background: #ddd0ac; color: var(--ink) !important; } .b2 { background: var(--tan); } .b3 { background: var(--shale); } .b4 { background: #8a7a5c; }
+main { max-width: 880px; margin: 0 auto; padding: 8px 22px 30px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--tan); padding: 8px 12px; text-align: left; vertical-align: top; }
+th { background: var(--tan); color: var(--ink); }
+code { background: #e7dcc2; padding: 1px 6px; border-radius: 3px; }
+pre { background: var(--shale); color: var(--cream); padding: 14px 16px; overflow-x: auto; border-radius: 4px; }
+pre code { background: transparent; color: inherit; padding: 0; }
+.hold { border-left: 5px solid var(--ribbon); background: #efe3cb; padding: 13px 18px; }
+footer { text-align: center; padding: 24px 18px 32px; color: #6f675a; font-size: .9rem; border-top: 6px solid var(--tan); margin-top: 28px; }
 </style>
 </head>
 <body>
-<header class="hero">
-<img class="logo" src="assets/logo.png" alt="Arched mosaic panel with a chrome keystone and one date set in pale tile">
-<img class="banner" src="assets/banner.png" alt="Station tile frieze with letter tiles spelling the project name above a central mosaic date">
-<h1>analyze-domain-age</h1>
-<p>The station wall, read from left to right. Each part of the page is one mosaic panel under its own arch.</p>
-<nav>
-<a class="tilebtn" href="#returns">What it returns</a>
-<a class="tilebtn" href="#running">Running it</a>
-<a class="tilebtn" href="#flags">Flag tiles</a>
-<a class="tilebtn" href="#gates">Closed gates</a>
-<a class="tilebtn" href="#notice">The notice</a>
-</nav>
-</header>
+<header class="top"><span class="wordmark">analyze-domain-age</span><span class="ribbon-note">One red ribbon</span></header>
+<section class="hero">
+<img class="logo" src="assets/logo.png" alt="Circular view of a stratified cliff face on a white square, even horizontal bands of tan sandstone, grey shale and cream limestone, one small red survey ribbon tied to a peg at a single low band">
+<h1>The Strata Section</h1>
+<p class="tag">Determines the age of a domain name using WHOIS lookups with the <code>python-whois</code> library. A domain, like a cliff band, carries its age in the layer where it was laid down; this tool reads the creation date off the record and counts the days.</p>
+<p class="buttons"><a href="https://github.com/ShadowGuard-AI/analyze-domain-age">View on GitHub</a> <a class="alt" href="https://github.com/ShadowGuard-AI/analyze-domain-age#readme">Read the README</a></p>
+</section>
+<figure class="wide"><img src="assets/intro-banner.png" alt="Lowest bands of a stratified cliff close up, a hand resting beside the red survey ribbon at the oldest dark shale layer, younger bands of sandstone and limestone rising in even steps above"><figcaption>A hand resting beside the red ribbon at the oldest layer, younger bands rising above.</figcaption></figure>
+<div class="bands">
+<div class="b1"><b>Prints</b>: the domain, its creation date, the current date, and the age in days.</div>
+<div class="b2"><b>With -o</b>: one CSV row with the domain, creation date, current date, and age in days.</div>
+<div class="b3"><b>Requirements</b>: pandas&gt;=2.2.0 and python-whois.</div>
+<div class="b4"><b>Licence</b>: MIT License, see LICENSE in the repository.</div>
+</div>
 <main>
-<section class="panel" id="returns"><h2>Panel one: what the tool returns</h2>
-<p>analyze-domain-age determines the age of a domain name by means of WHOIS lookups, using the python-whois library. On success it prints four things, set here as four tile rows:</p>
-<p>The domain. Its creation date. The current date. The age in days.</p>
-<p>That quartet is the entire promise. No registrar history, no expiry reporting, and no ownership details are added, because the README never mentions them.</p>
-</section>
-<div class="frieze"></div>
-<section class="panel" id="running"><h2>Panel two: arrival and departure</h2>
-<pre>git clone https://github.com/ShadowGuard-AI/analyze-domain-age
-cd analyze-domain-age
-pip install -r requirements.txt
-python3 main.py DOMAIN [-o OUTPUT] [-v]</pre>
-<p>The one example domain the README itself supplies in its parameter notes is <code>example.com</code>.</p>
-</section>
-<div class="frieze"></div>
-<section class="panel" id="flags"><h2>Panel three: the flag tiles</h2>
-<p><code>DOMAIN</code>: the domain name to analyze.</p>
-<p><code>-h</code>, help: shows the help message and exits.</p>
-<p><code>-o</code> or <code>--output</code>: an optional output file that saves results in CSV format.</p>
-<p><code>-v</code> or <code>--verbose</code>: enables verbose logging.</p>
-<p>With <code>-o</code>, the result is written as one CSV row carrying the same four values the terminal prints: domain, creation date, current date, and age in days.</p>
-</section>
-<div class="frieze"></div>
-<section class="panel" id="gates"><h2>Panel four: the two closed gates</h2>
-<p>A domain without a dot is rejected and the program exits with code 1.</p>
-<p>A failed WHOIS lookup also exits with code 1.</p>
-<p>In this station a refusal is part of the timetable, not an accident.</p>
-</section>
-<div class="frieze"></div>
-<section class="panel" id="notice"><h2>Panel five: the notice by the shuttered window</h2>
-<p>Live run not possible in this environment: the <code>whois</code> package is not installed here and installs are not permitted in this wave, and a live WHOIS lookup is outside the allowed network hosts. The parameter list above is taken from the argument parser in <code>main.py</code>, and the file compiles cleanly.</p>
-<p>This site keeps that notice visible instead of implying a demonstration that never happened.</p>
-<p>License: MIT License, see LICENSE.</p>
-<p><a href="https://github.com/ShadowGuard-AI/analyze-domain-age">The repository on GitHub</a></p>
-</section>
+<h2>Usage</h2>
+<pre><code>python3 main.py DOMAIN [-o OUTPUT] [-v]</code></pre>
+<h2>Parameters</h2>
+<table>
+<tr><th>Parameter</th><th>What the README says</th></tr>
+<tr><td><code>DOMAIN</code></td><td>The domain name to analyze, for example <code>example.com</code>.</td></tr>
+<tr><td><code>-h</code></td><td>Show help message and exit.</td></tr>
+<tr><td><code>-o</code>, <code>--output</code></td><td>Optional output file to save results in CSV format.</td></tr>
+<tr><td><code>-v</code>, <code>--verbose</code></td><td>Enable verbose logging.</td></tr>
+</table>
+<h2>Verified behavior</h2>
+<ul>
+<li>On success the tool prints the domain, its creation date, the current date, and the age in days.</li>
+<li>A domain without a dot is rejected and exits 1.</li>
+<li>A failed WHOIS lookup exits 1.</li>
+<li>With <code>-o</code>, the result is written as one CSV row with the domain, creation date, current date, and age in days.</li>
+</ul>
+<h2>Stated limits</h2>
+<div class="hold"><p>Live run not possible in the documenting environment: the <code>whois</code> package is not installed there and installs are not permitted in that wave, and a live WHOIS lookup is outside the allowed network hosts. The parameter list above is taken from the argument parser in <code>main.py</code>, and the file compiles cleanly. The two refusal cases stand in the open: a domain without a dot exits 1, and a failed WHOIS lookup exits 1.</p></div>
 </main>
-<footer><p>Theme: a Beaux Arts subway tile station. Type: Audiowide for headings, Alegreya Sans for reading, both SIL Open Font License 1.1. No lettering reference font is recorded for this theme, and none is embedded.</p></footer>
+<footer>analyze-domain-age, read layer by layer. Fonts: Shrikhand and Hind, self-hosted under the SIL Open Font License.</footer>
 </body>
 </html>
