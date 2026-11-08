@@ -4,7 +4,7 @@
 
 ![Long stratified cliff face in flat daylight, bands from dark shale at the base to pale limestone at the top, one small red survey ribbon at a low band, loose scree below](banner.png)
 
-<p align="center"><img src="logo.png" alt="Circular view of a stratified cliff face on a white square, even horizontal bands of tan sandstone, grey shale and cream limestone, one small red survey ribbon tied to a peg at a single low band" width="180"></p>
+<p align="center"><img src="logo.png" alt="Circular view of a stratified cliff face, its white surround cropped at the top and bottom edges of the frame, even horizontal bands of tan sandstone, grey shale and cream limestone, one small red survey ribbon tied to a peg at a single low band" width="180"></p>
 
 ![Station wall scene: tiles flip into a mosaic panel in four rows and a violet light wash passes behind the columns](scene.svg)
 
