@@ -7,12 +7,10 @@
 <p align="center"><img src="logo.png" alt="Circular view of a stratified cliff face, its white surround cropped at the top and bottom edges of the frame, even horizontal bands of tan sandstone, grey shale and cream limestone, one small red survey ribbon tied to a peg at a single low band" width="180"></p>
 
 ![Station wall scene: tiles flip into a mosaic panel in four rows and a violet light wash passes behind the columns](scene.svg)
-
-# analyze-domain-age
 Determines the age of a domain name using WHOIS lookups with the `python-whois` library.
 
 ## Install
-```
+```sh
 git clone https://github.com/ShadowGuard-AI/analyze-domain-age
 cd analyze-domain-age
 pip install -r requirements.txt
@@ -22,7 +20,7 @@ pip install -r requirements.txt
 ![Major section divider](sep-heavy.svg)
 
 ## Usage
-```
+```sh
 python3 main.py DOMAIN [-o OUTPUT] [-v]
 ```
 
@@ -49,6 +47,6 @@ python3 main.py DOMAIN [-o OUTPUT] [-v]
 ![Minor section divider](sep-light.svg)
 
 ## License
-MIT License, see LICENSE.
+MIT License, see [LICENSE](LICENSE).
 
 > Shuttered window note: the two refusal cases sit in the open in the Verified behavior section: a domain without a dot exits 1, and a failed WHOIS lookup exits 1. The same section states plainly that a live run was not possible in the documenting environment.
